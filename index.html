@@ -11,8 +11,6 @@
 <body>
     <!-- Preloader -->
     <div class="preloader">
-        <div class="preloader-panel left-panel"></div>
-        <div class="preloader-panel right-panel"></div>
         <div class="preloader-content">
             <div class="canvas-wrapper">
                 <canvas id="preloader-canvas"></canvas>
@@ -50,94 +48,21 @@
     </header>
 
     <section id="shop" class="products-section">
-        <h2 class="section-title reveal-text">LATEST DROPS</h2>
-        <div class="product-grid">
-            <div class="product-card fade-in" 
-                 data-title="HEAVY WASH DENIM" 
-                 data-price="$120.00" 
-                 data-image="assets/images/product_1.png"
-                 data-desc="14oz heavy-grade Japanese selvedge denim. Vintage charcoal wash, relaxed wide-leg silhouette, custom hardware, subtle leg stacking. Designed to drape over chunky footwear.">
-                <div class="product-image-wrapper">
-                    <img src="assets/images/product_1.png" alt="Heavy Wash Denim">
-                    <div class="product-overlay">
-                        <span class="view-text">QUICK VIEW</span>
-                    </div>
-                </div>
-                <div class="product-info">
-                    <h3>HEAVY WASH DENIM</h3>
-                    <p>$120.00</p>
-                </div>
-            </div>
-            
-            <div class="product-card fade-in sold-out-card" style="transition-delay: 0.1s;"
-                 data-title="ARCHIVE ZIP HOODIE" 
-                 data-price="$95.00" 
-                 data-image="assets/images/product_2.png"
-                 data-desc="450GSM heavy cotton fleece zip-up hoodie. Distressed enzyme wash, boxy cropped fit, double-lined hood, high-grade custom double metal zippers. Double stitch details.">
-                <div class="product-image-wrapper">
-                    <img src="assets/images/product_2.png" alt="Archive Zip Hoodie">
-                    <div class="product-overlay sold-out-overlay">
-                        <span class="view-text sold-out">SOLD OUT</span>
-                    </div>
-                </div>
-                <div class="product-info">
-                    <h3>ARCHIVE ZIP HOODIE</h3>
-                    <p class="sold-out-price">$95.00</p>
-                </div>
-            </div>
-            
-            <div class="product-card fade-in" style="transition-delay: 0.2s;"
-                 data-title="DISTRESSED KNIT" 
-                 data-price="$85.00" 
-                 data-image="assets/images/product_3.png"
-                 data-desc="Loose mohair-blend knit sweater with hand-distressed detailing throughout. Breathable, boxy fit, dropped shoulders. Features a rough texture and naturally frayed hems.">
-                <div class="product-image-wrapper">
-                    <img src="assets/images/product_3.png" alt="Distressed Knit">
-                    <div class="product-overlay">
-                        <span class="view-text">QUICK VIEW</span>
-                    </div>
-                </div>
-                <div class="product-info">
-                    <h3>DISTRESSED KNIT</h3>
-                    <p>$85.00</p>
-                </div>
+        <div class="coming-soon-container fade-in">
+            <div class="coming-soon-box">
+                <span class="status-badge">[ COLLECTION 01 / LOCKED ]</span>
+                <h2 class="coming-soon-title">COMING SOON</h2>
+                <div class="divider"></div>
+                <p class="coming-soon-desc">We are currently curating the first archive drop. Distressed silhouettes, custom washes, and raw textures are in development.</p>
+                <p class="signup-prompt">ENTER EMAIL BELOW FOR EARLY ACCESS TO THE DROP</p>
+                
+                <form class="coming-soon-form">
+                    <input type="email" placeholder="EMAIL ADDRESS" required>
+                    <button type="submit">SUBMIT</button>
+                </form>
             </div>
         </div>
     </section>
-
-    <!-- Drawer / Quick View Modal -->
-    <div class="drawer" id="quick-view-drawer">
-        <div class="drawer-overlay"></div>
-        <div class="drawer-content">
-            <button class="drawer-close" aria-label="Close modal">&times;</button>
-            <div class="drawer-body">
-                <div class="drawer-image">
-                    <img src="" id="modal-product-img" alt="Product Image">
-                </div>
-                <div class="drawer-info">
-                    <h2 id="modal-product-title">PRODUCT TITLE</h2>
-                    <p class="modal-price" id="modal-product-price">$0.00</p>
-                    
-                    <div class="size-selector">
-                        <h4>SELECT SIZE</h4>
-                        <div class="size-options">
-                            <button class="size-btn">S</button>
-                            <button class="size-btn active">M</button>
-                            <button class="size-btn">L</button>
-                            <button class="size-btn">XL</button>
-                        </div>
-                    </div>
-
-                    <div class="details-section">
-                        <h4>DETAILS</h4>
-                        <p id="modal-product-desc">Product description goes here.</p>
-                    </div>
-
-                    <button class="btn btn-solid add-to-cart-btn hover-effect">ADD TO BAG</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Mini Cart Drawer -->
     <div class="drawer" id="cart-drawer">

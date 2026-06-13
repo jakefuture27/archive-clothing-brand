@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             clearInterval(interval);
             setTimeout(() => {
-                // Trigger sliding panels and canvas unravel physics
+                // Trigger preloader fade out and canvas unravel physics
                 preloader.classList.add('loaded');
                 canvasState = 'unraveling';
                 
@@ -188,53 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 4. Drawer & Quick View Modal Logic
-    const quickViewDrawer = document.getElementById('quick-view-drawer');
-    const closeDrawerBtn = quickViewDrawer.querySelector('.drawer-close');
-    const drawerOverlay = quickViewDrawer.querySelector('.drawer-overlay');
-    
-    const modalImg = document.getElementById('modal-product-img');
-    const modalTitle = document.getElementById('modal-product-title');
-    const modalPrice = document.getElementById('modal-product-price');
-    const modalDesc = document.getElementById('modal-product-desc');
-
-    const openDrawer = (card) => {
-        const title = card.getAttribute('data-title');
-        const price = card.getAttribute('data-price');
-        const image = card.getAttribute('data-image');
-        const desc = card.getAttribute('data-desc');
-
-        modalTitle.textContent = title;
-        modalPrice.textContent = price;
-        modalImg.src = image;
-        modalDesc.textContent = desc;
-
-        quickViewDrawer.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Lock background scroll
-    };
-
-    const closeDrawer = () => {
-        quickViewDrawer.classList.remove('active');
-        document.body.style.overflow = ''; // Restore scroll
-    };
-
-    document.querySelectorAll('.product-card:not(.sold-out-card)').forEach(card => {
-        card.addEventListener('click', () => openDrawer(card));
-    });
-
-    closeDrawerBtn.addEventListener('click', closeDrawer);
-    drawerOverlay.addEventListener('click', closeDrawer);
-
-    // Size selector functionality inside modal
-    const sizeButtons = document.querySelectorAll('.size-btn');
-    sizeButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            sizeButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        });
-    });
-
-    // 5. Cart Drawer (Empty State Demo)
+    // 4. Cart Drawer (Empty State Demo)
     const cartDrawer = document.getElementById('cart-drawer');
     const cartTrigger = document.querySelector('.cart-trigger');
     const closeCartBtn = cartDrawer.querySelector('.drawer-close');
@@ -255,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
     closeCartBtn.addEventListener('click', closeCart);
     cartOverlay.addEventListener('click', closeCart);
 
-    // 6. Intersection Observer for scroll animations
+    // 5. Intersection Observer for scroll animations
     const observerOptions = {
         root: null,
         rootMargin: '0px',
