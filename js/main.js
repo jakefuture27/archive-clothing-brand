@@ -1,5 +1,76 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Preloader Canvas Unraveling/Untying Animation
+    // 1. Text Scramble (Matrix Hover) Animation Class
+    class TextScramble {
+        constructor(el) {
+            this.el = el;
+            this.chars = '!<>-_\\/[]{}—=+*^?#________';
+            this.update = this.update.bind(this);
+        }
+        setText(newText) {
+            const oldText = this.el.innerText;
+            const length = Math.max(oldText.length, newText.length);
+            const promise = new Promise((resolve) => this.resolve = resolve);
+            this.queue = [];
+            for (let i = 0; i < length; i++) {
+                const from = oldText[i] || '';
+                const to = newText[i] || '';
+                const start = Math.floor(Math.random() * 20);
+                const end = start + Math.floor(Math.random() * 20);
+                this.queue.push({ from, to, start, end, char: '' });
+            }
+            cancelAnimationFrame(this.frameId);
+            this.frame = 0;
+            this.update();
+            return promise;
+        }
+        update() {
+            let output = '';
+            let complete = 0;
+            for (let i = 0, n = this.queue.length; i < n; i++) {
+                let { from, to, start, end, char } = this.queue[i];
+                if (this.frame >= end) {
+                    complete++;
+                    output += to;
+                } else if (this.frame >= start) {
+                    if (!char || Math.random() < 0.28) {
+                        char = this.randomChar();
+                        this.queue[i].char = char;
+                    }
+                    output += `<span class="dud">${char}</span>`;
+                } else {
+                    output += from;
+                }
+            }
+            this.el.innerHTML = output;
+            if (complete === this.queue.length) {
+                this.resolve();
+            } else {
+                this.frameId = requestAnimationFrame(this.update);
+                this.frame++;
+            }
+        }
+        randomChar() {
+            return this.chars[Math.floor(Math.random() * this.chars.length)];
+        }
+    }
+
+    // Wire up all scramble-text elements
+    const scrambleElements = document.querySelectorAll('.scramble-text');
+    scrambleElements.forEach(el => {
+        const fx = new TextScramble(el);
+        const originalText = el.innerText;
+        let isScrambling = false;
+
+        el.addEventListener('mouseenter', () => {
+            if (isScrambling) return;
+            isScrambling = true;
+            fx.setText(originalText).then(() => {
+                isScrambling = false;
+            });
+        });
+    });
+
+    // 2. Preloader Canvas Unraveling/Untying Animation
     const preloader = document.querySelector('.preloader');
     const typingText = document.querySelector('.typing-text');
     const canvas = document.getElementById('preloader-canvas');
@@ -31,7 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const startY = (canvasHeight - 180) / 2;
 
         for (let i = 0; i < numSlices; i++) {
-            // Distance from the center (0 in center, 1 at edges)
             const distFromCenter = Math.abs(i - numSlices / 2) / (numSlices / 2);
             
             slices.push({
@@ -46,9 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 w: destSliceWidth,
                 h: 180,
                 vy: 0,
-                g: 0.12 + Math.random() * 0.08, // Subtle random gravity rate
+                g: 0.12 + Math.random() * 0.08,
                 amplitude: 0,
-                // Middle columns (the knot) fall first, outer columns follow
                 delay: distFromCenter * 35, 
                 active: false,
                 phase: Math.random() * Math.PI
@@ -62,7 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
         time += 0.05;
 
         if (canvasState === 'loading') {
-            // Pulse the logo smoothly while loading
             const scale = 1 + Math.sin(time * 2.5) * 0.025;
             const w = 180 * scale;
             const h = 180 * scale;
@@ -77,28 +145,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (s.delay > 0) {
                     s.delay--;
-                    // Draw normally before it starts untying
                     ctx.drawImage(logoImg, s.sx, s.sy, s.sw, s.sh, s.x, s.y, s.w, s.h);
                     allFallen = false;
                 } else {
                     s.active = true;
-                    // Increase wavy distortion over time
                     s.amplitude = Math.min(s.amplitude + 0.3, 14);
-                    // Gravity physics
                     s.vy += s.g;
                     s.y += s.vy;
-                    // Natural horizontal sway
                     s.x += Math.sin(time * 3 + s.phase) * 0.4;
 
                     if (s.y < canvasHeight + 100) {
                         allFallen = false;
 
-                        // Draw slice in segments to bend like strings
                         const segments = 12;
                         const segH = s.h / segments;
                         const srcSegH = s.sh / segments;
                         for (let j = 0; j < segments; j++) {
-                            // Sinusoidal wave sway along the length of each thread
                             const waveOffset = Math.sin(j * 0.5 + time * 8 + s.phase) * s.amplitude;
                             ctx.drawImage(
                                 logoImg,
@@ -135,17 +197,14 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             clearInterval(interval);
             setTimeout(() => {
-                // Trigger preloader fade out and canvas unravel physics
                 preloader.classList.add('loaded');
                 canvasState = 'unraveling';
                 
-                // Reveal Hero contents
                 setTimeout(() => {
                     document.querySelector('.hero').classList.add('active');
                     document.querySelector('.hero-content').classList.add('appear');
                 }, 600);
 
-                // Disable preloader rendering after completion to save CPU
                 setTimeout(() => {
                     cancelAnimationFrame(animationFrameId);
                     preloader.style.display = 'none';
@@ -154,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 800);
 
-    // 2. Countdown Timer logic
+    // 3. Countdown Timer logic
     const timerDisplay = document.getElementById('timer');
     const dropDate = new Date().getTime() + (24 * 60 * 60 * 1000);
 
@@ -179,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
         timerDisplay.innerHTML = `${h}:${m}:${s}`;
     }, 1000);
 
-    // 3. Parallax Scroll Effect on Hero
+    // 4. Parallax Scroll Effect on Hero
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
         const heroBg = document.querySelector('.hero-bg');
@@ -188,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 4. Cart Drawer (Empty State Demo)
+    // 5. Cart Drawer (Empty State Demo)
     const cartDrawer = document.getElementById('cart-drawer');
     const cartTrigger = document.querySelector('.cart-trigger');
     const closeCartBtn = cartDrawer.querySelector('.drawer-close');
@@ -209,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
     closeCartBtn.addEventListener('click', closeCart);
     cartOverlay.addEventListener('click', closeCart);
 
-    // 5. Intersection Observer for scroll animations
+    // 6. Intersection Observer for scroll animations
     const observerOptions = {
         root: null,
         rootMargin: '0px',
