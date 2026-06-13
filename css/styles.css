@@ -21,7 +21,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-primary);
     font-family: var(--font-main);
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 /* CRT scanlines overlay removed for a clean layout */
@@ -260,6 +260,25 @@ body {
     font-size: 0.75rem;
     color: var(--text-secondary);
     letter-spacing: 3px;
+}
+
+/* Hero Signup Form */
+.hero-signup {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+.hero-signup-prompt {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 /* Buttons */

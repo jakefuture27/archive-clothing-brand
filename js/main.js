@@ -237,23 +237,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. Cart Drawer (Empty State Demo)
     const cartDrawer = document.getElementById('cart-drawer');
     const cartTrigger = document.querySelector('.cart-trigger');
-    const closeCartBtn = cartDrawer.querySelector('.drawer-close');
-    const cartOverlay = cartDrawer.querySelector('.drawer-overlay');
+    if (cartDrawer && cartTrigger) {
+        const closeCartBtn = cartDrawer.querySelector('.drawer-close');
+        const cartOverlay = cartDrawer.querySelector('.drawer-overlay');
 
-    const openCart = (e) => {
-        e.preventDefault();
-        cartDrawer.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    };
+        const openCart = (e) => {
+            e.preventDefault();
+            cartDrawer.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
 
-    const closeCart = () => {
-        cartDrawer.classList.remove('active');
-        document.body.style.overflow = '';
-    };
+        const closeCart = () => {
+            cartDrawer.classList.remove('active');
+            document.body.style.overflow = '';
+        };
 
-    cartTrigger.addEventListener('click', openCart);
-    closeCartBtn.addEventListener('click', closeCart);
-    cartOverlay.addEventListener('click', closeCart);
+        cartTrigger.addEventListener('click', openCart);
+        if (closeCartBtn) closeCartBtn.addEventListener('click', closeCart);
+        if (cartOverlay) cartOverlay.addEventListener('click', closeCart);
+    }
 
     // 6. Intersection Observer for scroll animations
     const observerOptions = {
