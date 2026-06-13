@@ -208,6 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     cancelAnimationFrame(animationFrameId);
                     preloader.style.display = 'none';
+                    document.body.classList.add('preloader-done');
                 }, 2000);
             }, 600);
         }
@@ -307,5 +308,77 @@ document.addEventListener('DOMContentLoaded', () => {
                 fx.setText('[ ACCESS GRANTED ]');
             }, 400);
         });
+    }
+
+    // 8. Floating Discount Pill Logic
+    const discountPill = document.getElementById('discount-pill');
+    if (discountPill) {
+        const discountClose = discountPill.querySelector('.discount-close');
+        const discountForm = discountPill.querySelector('.discount-form');
+        const discountInput = discountForm ? discountForm.querySelector('input') : null;
+        const discountTriggerText = discountPill.querySelector('.discount-trigger-text');
+
+        discountPill.addEventListener('click', (e) => {
+            if (e.target.closest('.discount-close') || e.target.closest('.discount-form')) {
+                return;
+            }
+            if (!discountPill.classList.contains('expanded')) {
+                discountPill.classList.add('expanded');
+                if (discountInput) {
+                    discountInput.focus();
+                }
+            }
+        });
+
+        if (discountClose) {
+            discountClose.addEventListener('click', (e) => {
+                e.stopPropagation();
+                discountPill.style.opacity = '0';
+                discountPill.style.transform = 'translateY(20px)';
+                discountPill.style.pointerEvents = 'none';
+                setTimeout(() => {
+                    discountPill.style.display = 'none';
+                }, 400);
+            });
+        }
+
+        if (discountForm) {
+            discountForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const submitBtn = discountForm.querySelector('button');
+                if (discountInput) discountInput.disabled = true;
+                if (submitBtn) submitBtn.disabled = true;
+                
+                discountForm.style.opacity = '0';
+                if (discountTriggerText) discountTriggerText.style.opacity = '0';
+                
+                setTimeout(() => {
+                    discountForm.style.display = 'none';
+                    if (discountTriggerText) discountTriggerText.style.display = 'none';
+                    
+                    const successSpan = document.createElement('span');
+                    successSpan.className = 'discount-success';
+                    successSpan.innerText = '[ SECURED: TIED5 ]';
+                    discountPill.appendChild(successSpan);
+                    
+                    const fx = new TextScramble(successSpan);
+                    fx.setText('[ SECURED: TIED5 ]');
+                }, 300);
+            });
+        }
+    }
+
+    // 9. Live Visitors Fluctuation Logic
+    const liveCountEl = document.getElementById('live-count');
+    if (liveCountEl) {
+        let count = parseInt(liveCountEl.innerText, 10) || 34;
+        setInterval(() => {
+            const shift = Math.floor(Math.random() * 5) - 2; // -2, -1, 0, 1, 2
+            count = Math.max(15, Math.min(85, count + shift));
+            
+            const fx = new TextScramble(liveCountEl);
+            fx.setText(count.toString());
+        }, 4000);
     }
 });

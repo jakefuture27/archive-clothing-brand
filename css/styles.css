@@ -484,6 +484,202 @@ body::after {
     transform: translateY(0);
 }
 
+/* Floating Widgets */
+.floating-discount, .floating-shoppers {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease 1s, visibility 1s ease 1s; /* Delay fade-in until preloader ends */
+}
+
+body.preloader-done .floating-discount, 
+body.preloader-done .floating-shoppers {
+    opacity: 1;
+    visibility: visible;
+}
+
+.floating-discount {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    background-color: #161616;
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    padding: 0.8rem 1.6rem;
+    z-index: 1500;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(0);
+}
+
+.floating-discount:hover:not(.expanded) {
+    border-color: var(--text-primary);
+    transform: translateY(-2px);
+}
+
+.floating-discount.expanded {
+    padding: 0.4rem 0.4rem 0.4rem 1.2rem;
+    cursor: default;
+    background-color: #0d0d0d;
+}
+
+.discount-trigger-text {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    transition: opacity 0.3s ease, width 0.3s ease, margin 0.3s ease;
+    opacity: 1;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.floating-discount.expanded .discount-trigger-text {
+    opacity: 0;
+    width: 0;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.discount-close {
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #b0b0b0;
+    color: #000000;
+    border: none;
+    font-size: 9px;
+    font-weight: 900;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.discount-close:hover {
+    background-color: #ffffff;
+}
+
+.discount-form {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    width: 0;
+    opacity: 0;
+    transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.floating-discount.expanded .discount-form {
+    width: 250px;
+    opacity: 1;
+}
+
+.discount-form input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-family: var(--font-main);
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    width: 170px;
+    padding-right: 0.5rem;
+}
+
+.discount-form button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.discount-form button:hover {
+    background-color: #e0e0e0;
+}
+
+.discount-success {
+    font-family: monospace;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: #00ff66;
+    font-weight: 600;
+    padding-right: 0.8rem;
+}
+
+/* Live Shoppers Widget */
+.floating-shoppers {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: rgba(8, 8, 8, 0.6);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    padding: 0.7rem 1.4rem;
+    z-index: 1500;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    pointer-events: none;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #00ff66;
+    position: relative;
+}
+
+.pulse-dot::after {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid #00ff66;
+    animation: dotPulse 2s infinite ease-out;
+}
+
+@keyframes dotPulse {
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+.shopper-count {
+    font-family: monospace;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
 /* Drawer / Sidebar Modal */
 .drawer {
     position: fixed;
@@ -803,5 +999,15 @@ body::after {
     
     .marquee-content {
         font-size: 4rem;
+    }
+    
+    .floating-discount {
+        bottom: 1.5rem;
+        left: 1.5rem;
+    }
+    
+    .floating-shoppers {
+        bottom: 1.5rem;
+        right: 1.5rem;
     }
 }
