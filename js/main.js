@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Countdown Timer logic
     const timerDisplay = document.getElementById('timer');
-    const dropDate = new Date().getTime() + (24 * 60 * 60 * 1000);
+    const dropDate = new Date('July 31, 2026 00:00:00').getTime();
 
     const updateTimer = setInterval(() => {
         const now = new Date().getTime();
@@ -214,15 +214,17 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+        const d = days < 10 ? "0" + days : days;
         const h = hours < 10 ? "0" + hours : hours;
         const m = minutes < 10 ? "0" + minutes : minutes;
         const s = seconds < 10 ? "0" + seconds : seconds;
 
-        timerDisplay.innerHTML = `${h}:${m}:${s}`;
+        timerDisplay.innerHTML = `${d}D : ${h}H : ${m}M : ${s}S`;
     }, 1000);
 
     // 4. Parallax Scroll Effect on Hero
