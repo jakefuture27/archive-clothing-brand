@@ -357,16 +357,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 9. Live Visitors Fluctuation Logic
-    const liveCountEl = document.getElementById('live-count');
-    if (liveCountEl) {
-        let count = parseInt(liveCountEl.innerText, 10) || 34;
-        setInterval(() => {
-            const shift = Math.floor(Math.random() * 5) - 2; // -2, -1, 0, 1, 2
-            count = Math.max(15, Math.min(85, count + shift));
-            
-            const fx = new TextScramble(liveCountEl);
-            fx.setText(count.toString());
-        }, 4000);
-    }
 });
