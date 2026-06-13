@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Preloader connection status typing sequence
     const statusMessages = [
-        "CONNECTING TO ARCHIVE...",
+        "CONNECTING TO COLLECTIVE...",
         "AUTHENTICATING...",
         "ACCESS GRANTED."
     ];
