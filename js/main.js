@@ -18,12 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             clearInterval(interval);
             setTimeout(() => {
-                preloader.classList.add('fade-out');
+                // Add 'loaded' class to trigger split untie animation
+                preloader.classList.add('loaded');
                 // Reveal Hero animations
                 setTimeout(() => {
                     document.querySelector('.hero').classList.add('active');
                     document.querySelector('.hero-content').classList.add('appear');
-                }, 400);
+                }, 600);
             }, 600);
         }
     }, 800);

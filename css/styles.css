@@ -24,24 +24,49 @@ body {
     overflow-x: hidden;
 }
 
-/* Preloader styles */
+/* Preloader split panel styles */
 .preloader {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #000000;
     z-index: 10000;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 0.8s cubic-bezier(0.85, 0, 0.15, 1), visibility 0.8s;
+    visibility: visible;
+    transition: visibility 0.8s;
 }
 
-.preloader.fade-out {
-    opacity: 0;
+.preloader.loaded {
     visibility: hidden;
+}
+
+.preloader-panel {
+    position: absolute;
+    top: 0;
+    width: 50.5vw; /* Slight overlap to prevent seam line */
+    height: 100%;
+    background-color: #000000;
+    z-index: 1;
+    transition: transform 1s cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+.left-panel {
+    left: 0;
+}
+
+.right-panel {
+    right: 0;
+}
+
+.preloader.loaded .left-panel {
+    transform: translateX(-100%);
+}
+
+.preloader.loaded .right-panel {
+    transform: translateX(100%);
 }
 
 .preloader-content {
@@ -49,17 +74,55 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+    z-index: 2;
+    position: relative;
+}
+
+/* Split Untie Logo Animation */
+.split-logo-wrapper {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    animation: logoPulse 2s infinite ease-in-out;
 }
 
 .preloader-logo {
-    width: 180px;
-    height: 180px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    animation: logoPulse 2s infinite ease-in-out;
+    will-change: transform, opacity;
+}
+
+.logo-left {
+    clip-path: inset(0 50% 0 0);
+    transition: transform 1.1s cubic-bezier(0.85, 0, 0.15, 1), opacity 0.8s ease;
+}
+
+.logo-right {
+    clip-path: inset(0 0 0 50%);
+    transition: transform 1.1s cubic-bezier(0.85, 0, 0.15, 1), opacity 0.8s ease;
+}
+
+.preloader.loaded .logo-left {
+    transform: translateX(-160px) rotate(-15deg);
+    opacity: 0;
+}
+
+.preloader.loaded .logo-right {
+    transform: translateX(160px) rotate(15deg);
+    opacity: 0;
 }
 
 .preloader-status {
     height: 20px;
+    transition: opacity 0.4s ease;
+}
+
+.preloader.loaded .preloader-status {
+    opacity: 0;
 }
 
 .typing-text {
