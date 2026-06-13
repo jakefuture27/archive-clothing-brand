@@ -126,6 +126,11 @@ body::after {
     mix-blend-mode: difference;
 }
 
+.nav-left, .nav-right {
+    display: flex;
+    gap: 2rem;
+}
+
 .nav-link, .logo-text {
     color: var(--text-primary);
     text-decoration: none;
