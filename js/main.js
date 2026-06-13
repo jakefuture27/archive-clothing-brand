@@ -288,4 +288,24 @@ document.addEventListener('DOMContentLoaded', () => {
     animatedElements.forEach(el => {
         observer.observe(el);
     });
+
+    // 7. Coming Soon Form Submission logic
+    const comingSoonForm = document.querySelector('.coming-soon-form');
+    const successMsg = document.querySelector('.form-success-msg');
+    const successText = successMsg ? successMsg.querySelector('.success-text') : null;
+
+    if (comingSoonForm && successMsg) {
+        comingSoonForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            comingSoonForm.classList.add('hide');
+            
+            setTimeout(() => {
+                comingSoonForm.style.display = 'none';
+                successMsg.classList.add('show');
+                
+                const fx = new TextScramble(successText);
+                fx.setText('[ ACCESS GRANTED ]');
+            }, 400);
+        });
+    }
 });

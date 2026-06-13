@@ -444,6 +444,41 @@ body::after {
     color: var(--text-primary);
 }
 
+.coming-soon-form {
+    transition: opacity 0.4s ease, visibility 0.4s;
+    opacity: 1;
+    visibility: visible;
+}
+
+.coming-soon-form.hide {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    pointer-events: none;
+}
+
+.form-success-msg {
+    font-family: monospace;
+    font-size: 1.1rem;
+    letter-spacing: 4px;
+    color: #00ff66; /* Neon green success indicator */
+    font-weight: 600;
+    margin-top: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(10px);
+}
+
+.form-success-msg.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
 /* Drawer / Sidebar Modal */
 .drawer {
     position: fixed;
