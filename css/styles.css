@@ -202,15 +202,16 @@ body {
     gap: 1.5rem;
 }
 
-.hero-brand {
-    margin-bottom: 0.5rem;
+.nav-logo {
+    height: 40px;
+    width: auto;
+    display: block;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.05));
+    transition: opacity 0.3s;
 }
 
-.hero-logo {
-    width: 260px;
-    height: 260px;
-    object-fit: cover;
-    filter: drop-shadow(0 0 15px rgba(255,255,255,0.03));
+.nav-logo:hover {
+    opacity: 0.8;
 }
 
 /* Clean Flat Title Style */
@@ -1076,9 +1077,8 @@ body.preloader-done .floating-shoppers {
         padding: 4rem 2rem 6rem;
     }
     
-    .hero-logo {
-        width: 180px;
-        height: 180px;
+    .nav-logo {
+        height: 32px;
     }
     
     .drawer-content {
