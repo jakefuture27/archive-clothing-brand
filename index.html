@@ -3,23 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DITCH LA - Archive Clothing Brand">
-    <title>DITCH | ARCHIVE</title>
+    <meta name="description" content="TIED - Archive Clothing Brand">
+    <title>TIED | ARCHIVE</title>
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <img src="assets/images/logo.jpg" alt="TIED Logo" class="preloader-logo">
+            <div class="preloader-status">
+                <span class="typing-text">CONNECTING TO ARCHIVE...</span>
+            </div>
+        </div>
+    </div>
+
     <div class="custom-cursor"></div>
+    
     <nav class="navbar">
         <div class="nav-left"><a href="#shop" class="nav-link">SHOP</a></div>
-        <div class="nav-center"><a href="#" class="logo">DITCH</a></div>
-        <div class="nav-right"><a href="#" class="nav-link">CART (0)</a></div>
+        <div class="nav-center"><a href="#" class="logo-text">TIED</a></div>
+        <div class="nav-right"><a href="#" class="nav-link cart-trigger">CART (0)</a></div>
     </nav>
 
     <header class="hero">
         <div class="hero-bg" style="background-image: url('assets/images/hero.png');"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content fade-in-up">
+            <div class="hero-brand">
+                <img src="assets/images/logo.jpg" alt="TIED Logo" class="hero-logo">
+            </div>
             <h1 class="glitch" data-text="COLLECTION 01">COLLECTION 01</h1>
             <div class="countdown">
                 <span id="timer">24:00:00</span>
@@ -36,11 +50,15 @@
     <section id="shop" class="products-section">
         <h2 class="section-title reveal-text">LATEST DROPS</h2>
         <div class="product-grid">
-            <div class="product-card fade-in">
+            <div class="product-card fade-in" 
+                 data-title="HEAVY WASH DENIM" 
+                 data-price="$120.00" 
+                 data-image="assets/images/product_1.png"
+                 data-desc="14oz heavy-grade Japanese selvedge denim. Vintage charcoal wash, relaxed wide-leg silhouette, custom hardware, subtle leg stacking. Designed to drape over chunky footwear.">
                 <div class="product-image-wrapper">
                     <img src="assets/images/product_1.png" alt="Heavy Wash Denim">
                     <div class="product-overlay">
-                        <span class="view-text">VIEW ITEM</span>
+                        <span class="view-text">QUICK VIEW</span>
                     </div>
                 </div>
                 <div class="product-info">
@@ -48,7 +66,12 @@
                     <p>$120.00</p>
                 </div>
             </div>
-            <div class="product-card fade-in" style="transition-delay: 0.1s;">
+            
+            <div class="product-card fade-in sold-out-card" style="transition-delay: 0.1s;"
+                 data-title="ARCHIVE ZIP HOODIE" 
+                 data-price="$95.00" 
+                 data-image="assets/images/product_2.png"
+                 data-desc="450GSM heavy cotton fleece zip-up hoodie. Distressed enzyme wash, boxy cropped fit, double-lined hood, high-grade custom double metal zippers. Double stitch details.">
                 <div class="product-image-wrapper">
                     <img src="assets/images/product_2.png" alt="Archive Zip Hoodie">
                     <div class="product-overlay sold-out-overlay">
@@ -60,11 +83,16 @@
                     <p class="sold-out-price">$95.00</p>
                 </div>
             </div>
-            <div class="product-card fade-in" style="transition-delay: 0.2s;">
+            
+            <div class="product-card fade-in" style="transition-delay: 0.2s;"
+                 data-title="DISTRESSED KNIT" 
+                 data-price="$85.00" 
+                 data-image="assets/images/product_3.png"
+                 data-desc="Loose mohair-blend knit sweater with hand-distressed detailing throughout. Breathable, boxy fit, dropped shoulders. Features a rough texture and naturally frayed hems.">
                 <div class="product-image-wrapper">
                     <img src="assets/images/product_3.png" alt="Distressed Knit">
                     <div class="product-overlay">
-                        <span class="view-text">VIEW ITEM</span>
+                        <span class="view-text">QUICK VIEW</span>
                     </div>
                 </div>
                 <div class="product-info">
@@ -75,15 +103,70 @@
         </div>
     </section>
 
+    <!-- Drawer / Quick View Modal -->
+    <div class="drawer" id="quick-view-drawer">
+        <div class="drawer-overlay"></div>
+        <div class="drawer-content">
+            <button class="drawer-close" aria-label="Close modal">&times;</button>
+            <div class="drawer-body">
+                <div class="drawer-image">
+                    <img src="" id="modal-product-img" alt="Product Image">
+                </div>
+                <div class="drawer-info">
+                    <h2 id="modal-product-title">PRODUCT TITLE</h2>
+                    <p class="modal-price" id="modal-product-price">$0.00</p>
+                    
+                    <div class="size-selector">
+                        <h4>SELECT SIZE</h4>
+                        <div class="size-options">
+                            <button class="size-btn">S</button>
+                            <button class="size-btn active">M</button>
+                            <button class="size-btn">L</button>
+                            <button class="size-btn">XL</button>
+                        </div>
+                    </div>
+
+                    <div class="details-section">
+                        <h4>DETAILS</h4>
+                        <p id="modal-product-desc">Product description goes here.</p>
+                    </div>
+
+                    <button class="btn btn-solid add-to-cart-btn hover-effect">ADD TO BAG</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mini Cart Drawer -->
+    <div class="drawer" id="cart-drawer">
+        <div class="drawer-overlay"></div>
+        <div class="drawer-content">
+            <button class="drawer-close" aria-label="Close cart">&times;</button>
+            <div class="drawer-body cart-body">
+                <h2>YOUR BAG</h2>
+                <div class="cart-items">
+                    <p class="empty-cart-msg">YOUR BAG IS EMPTY.</p>
+                </div>
+                <div class="cart-footer">
+                    <div class="cart-total">
+                        <span>TOTAL</span>
+                        <span id="cart-total-price">$0.00</span>
+                    </div>
+                    <button class="btn btn-solid checkout-btn hover-effect" disabled>CHECKOUT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <section class="archive-section">
         <div class="marquee">
             <div class="marquee-content">
-                <span>ARCHIVE</span><span class="dot">·</span>
-                <span>ARCHIVE</span><span class="dot">·</span>
-                <span>ARCHIVE</span><span class="dot">·</span>
-                <span>ARCHIVE</span><span class="dot">·</span>
-                <span>ARCHIVE</span><span class="dot">·</span>
-                <span>ARCHIVE</span><span class="dot">·</span>
+                <span>TIED</span><span class="dot">·</span>
+                <span>TIED</span><span class="dot">·</span>
+                <span>TIED</span><span class="dot">·</span>
+                <span>TIED</span><span class="dot">·</span>
+                <span>TIED</span><span class="dot">·</span>
+                <span>TIED</span><span class="dot">·</span>
             </div>
         </div>
         <div class="archive-content fade-in">
@@ -112,7 +195,7 @@
                 <a href="#" class="footer-link">CONTACT</a>
             </div>
         </div>
-        <p class="copyright">© 2026 DITCH LA. ALL RIGHTS RESERVED.</p>
+        <p class="copyright">© 2026 TIED LA. ALL RIGHTS RESERVED.</p>
     </footer>
 
     <script src="js/main.js"></script>
