@@ -21,14 +21,24 @@
         </div>
     </div>
 
-    <nav class="navbar">
-        <div class="nav-left">
-            <a href="#shop" class="nav-link scramble-text">SHOP</a>
-            <a href="https://instagram.com/tied" target="_blank" rel="noopener noreferrer" class="nav-link scramble-text">INSTAGRAM</a>
+    <!-- Site Header Container -->
+    <header class="site-header">
+        <div class="announcement-bar">
+            <span>TIED ARCHIVE // COLLECTION 01 DROPPING SOON</span>
         </div>
-        <div class="nav-center"><a href="#" class="logo-text scramble-text">TIED</a></div>
-        <div class="nav-right"><a href="#" class="nav-link cart-trigger scramble-text">CART (0)</a></div>
-    </nav>
+        <nav class="navbar">
+            <div class="nav-left">
+                <a href="#latest-drops" class="nav-link">NEW RELEASES</a>
+                <a href="#latest-drops" class="nav-link">DENIM</a>
+                <a href="#latest-drops" class="nav-link">BLANKS</a>
+                <a href="https://instagram.com/tied" target="_blank" rel="noopener noreferrer" class="nav-link">INSTAGRAM</a>
+            </div>
+            <div class="nav-center"><a href="#" class="logo-text">TIED</a></div>
+            <div class="nav-right">
+                <a href="#" class="nav-link cart-trigger">BAG (0)</a>
+            </div>
+        </nav>
+    </header>
 
     <header class="hero">
         <div class="hero-bg" style="background-image: url('assets/images/hero.png');"></div>
@@ -37,12 +47,12 @@
             <div class="hero-brand">
                 <img src="assets/images/logo.png" alt="TIED Logo" class="hero-logo">
             </div>
-            <h1 class="glitch" data-text="COLLECTION 01">COLLECTION 01</h1>
+            <h1 class="hero-title">COLLECTION 01</h1>
             <div class="countdown">
                 <span id="timer">24:00:00</span>
                 <p>UNTIL DROP</p>
             </div>
-            <a href="#shop" class="btn btn-outline hover-effect scramble-text">EXPLORE</a>
+            <a href="#latest-drops" class="btn btn-outline hover-effect">EXPLORE</a>
         </div>
         <div class="scroll-indicator">
             <span>SCROLL</span>
@@ -50,22 +60,79 @@
         </div>
     </header>
 
-    <section id="shop" class="products-section">
-        <div class="coming-soon-container fade-in">
-            <div class="coming-soon-box">
-                <span class="status-badge scramble-text">[ COLLECTION 01 / LOCKED ]</span>
-                <h2 class="coming-soon-title">COMING SOON</h2>
-                <div class="divider"></div>
-                <p class="coming-soon-desc">We are currently curating the first archive drop. Distressed silhouettes, custom washes, and raw textures are in development.</p>
-                <p class="signup-prompt">ENTER EMAIL BELOW FOR EARLY ACCESS TO THE DROP</p>
-                
-                <form class="coming-soon-form">
-                    <input type="email" placeholder="EMAIL ADDRESS" required>
-                    <button type="submit" class="scramble-text">SUBMIT</button>
-                </form>
-                <div class="form-success-msg">
-                    <span class="success-text">[ ACCESS GRANTED ]</span>
+    <!-- Latest Drops Placeholder Section -->
+    <section id="latest-drops" class="drops-section">
+        <div class="section-header fade-in">
+            <h2>[ LATEST DROPS / COLLECTION 01 ]</h2>
+        </div>
+        <div class="drops-grid fade-in">
+            <div class="product-card">
+                <div class="product-image-placeholder">
+                    <div class="placeholder-watermark">TIED</div>
+                    <span class="product-status-tag">COMING SOON</span>
                 </div>
+                <div class="product-info">
+                    <h3 class="product-title">TIED.01 / OVERSIZED HOODIE</h3>
+                    <div class="product-details">
+                        <span class="product-spec">450GSM COTTON • CUSTOM WASH</span>
+                        <span class="product-price">[ $85.00 ]</span>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image-placeholder">
+                    <div class="placeholder-watermark">TIED</div>
+                    <span class="product-status-tag">COMING SOON</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">TIED.02 / WIDE DENIM</h3>
+                    <div class="product-details">
+                        <span class="product-spec">14OZ SELVEDGE • DISTRESSED</span>
+                        <span class="product-price">[ $110.00 ]</span>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image-placeholder">
+                    <div class="placeholder-watermark">TIED</div>
+                    <span class="product-status-tag">COMING SOON</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">TIED.03 / BOX TEE</h3>
+                    <div class="product-details">
+                        <span class="product-spec">280GSM COMPACT • VINTAGE BLACK</span>
+                        <span class="product-price">[ $45.00 ]</span>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image-placeholder">
+                    <div class="placeholder-watermark">TIED</div>
+                    <span class="product-status-tag">COMING SOON</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">TIED.04 / SWEATSHORT</h3>
+                    <div class="product-details">
+                        <span class="product-spec">400GSM FRENCH TERRY • RAW EDGE</span>
+                        <span class="product-price">[ $65.00 ]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Early Access Form Section -->
+    <section id="signup" class="signup-section">
+        <div class="signup-container fade-in">
+            <span class="status-badge">[ COLLECTION 01 / LOCKED ]</span>
+            <h2>EARLY ACCESS</h2>
+            <p class="signup-desc">We are currently curating the first drop. Enter your email to receive early access codes before drop goes public.</p>
+            <form class="coming-soon-form">
+                <input type="email" placeholder="EMAIL ADDRESS" required>
+                <button type="submit">SUBMIT</button>
+            </form>
+            <div class="form-success-msg">
+                <span class="success-text">[ ACCESS GRANTED ]</span>
             </div>
         </div>
     </section>
@@ -85,7 +152,7 @@
                         <span>TOTAL</span>
                         <span id="cart-total-price">$0.00</span>
                     </div>
-                    <button class="btn btn-solid checkout-btn hover-effect scramble-text" disabled>CHECKOUT</button>
+                    <button class="btn btn-solid checkout-btn hover-effect" disabled>CHECKOUT</button>
                 </div>
             </div>
         </div>
@@ -94,7 +161,7 @@
     <!-- Floating Widgets -->
     <div class="floating-discount" id="discount-pill">
         <button class="discount-close" aria-label="Close discount">&times;</button>
-        <div class="discount-trigger-text scramble-text">GET $5 OFF</div>
+        <div class="discount-trigger-text">GET $5 OFF</div>
         <form class="discount-form">
             <input type="email" placeholder="EMAIL ADDRESS" required>
             <button type="submit">→</button>
@@ -119,7 +186,7 @@
         </div>
         <div class="archive-content fade-in">
             <p>Exploring the intersection of modern silhouette and vintage wash. Each piece is designed to fade, distress, and evolve with the wearer.</p>
-            <a href="#" class="btn btn-solid hover-effect scramble-text">VIEW ARCHIVE</a>
+            <a href="#" class="btn btn-solid hover-effect">VIEW ARCHIVE</a>
         </div>
     </section>
 
@@ -133,14 +200,14 @@
                 </form>
             </div>
             <div class="footer-col fade-in" style="transition-delay: 0.1s;">
-                <a href="https://instagram.com/tied" target="_blank" rel="noopener noreferrer" class="footer-link scramble-text">INSTAGRAM</a>
-                <a href="#" class="footer-link scramble-text">TIKTOK</a>
-                <a href="#" class="footer-link scramble-text">TWITTER</a>
+                <a href="https://instagram.com/tied" target="_blank" rel="noopener noreferrer" class="footer-link">INSTAGRAM</a>
+                <a href="#" class="footer-link">TIKTOK</a>
+                <a href="#" class="footer-link">TWITTER</a>
             </div>
             <div class="footer-col fade-in" style="transition-delay: 0.2s;">
-                <a href="#" class="footer-link scramble-text">TERMS</a>
-                <a href="#" class="footer-link scramble-text">PRIVACY</a>
-                <a href="#" class="footer-link scramble-text">CONTACT</a>
+                <a href="#" class="footer-link">TERMS</a>
+                <a href="#" class="footer-link">PRIVACY</a>
+                <a href="#" class="footer-link">CONTACT</a>
             </div>
         </div>
         <p class="copyright">© 2026 TIED LA. ALL RIGHTS RESERVED.</p>

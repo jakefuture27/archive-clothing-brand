@@ -54,21 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Wire up all scramble-text elements
-    const scrambleElements = document.querySelectorAll('.scramble-text');
-    scrambleElements.forEach(el => {
-        const fx = new TextScramble(el);
-        const originalText = el.innerText;
-        let isScrambling = false;
-
-        el.addEventListener('mouseenter', () => {
-            if (isScrambling) return;
-            isScrambling = true;
-            fx.setText(originalText).then(() => {
-                isScrambling = false;
-            });
-        });
-    });
+    // Scramble effect is kept for status changes but removed on hovers to keep layout simple.
 
     // 2. Preloader Canvas Unraveling/Untying Animation
     const preloader = document.querySelector('.preloader');
