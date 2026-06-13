@@ -150,8 +150,9 @@ body {
 }
 
 .logo-text {
+    font-family: 'Stardos Stencil', sans-serif;
     font-size: 1.6rem;
-    font-weight: 900;
+    font-weight: 700;
     letter-spacing: 6px;
 }
 
@@ -214,8 +215,9 @@ body {
 
 /* Clean Flat Title Style */
 .hero-title {
+    font-family: 'Stardos Stencil', sans-serif;
     font-size: 4.5rem;
-    font-weight: 900;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 10px;
     color: var(--text-primary);
@@ -326,9 +328,10 @@ body {
 }
 
 .section-header h2 {
+    font-family: 'Stardos Stencil', sans-serif;
     font-size: 1.2rem;
     letter-spacing: 4px;
-    font-weight: 900;
+    font-weight: 700;
     text-transform: uppercase;
 }
 
@@ -441,8 +444,9 @@ body {
 }
 
 .signup-container h2 {
+    font-family: 'Stardos Stencil', sans-serif;
     font-size: 1.8rem;
-    font-weight: 900;
+    font-weight: 700;
     letter-spacing: 6px;
     text-transform: uppercase;
 }
