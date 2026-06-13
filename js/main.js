@@ -28,30 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 800);
 
-    // 2. Custom Cursor
-    const cursor = document.querySelector('.custom-cursor');
-    const hoverElements = document.querySelectorAll('a, button, .product-card, .hover-effect, .drawer-close');
-
-    if (window.matchMedia('(pointer: fine)').matches) {
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-
-        hoverElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.classList.add('hover');
-            });
-            el.addEventListener('mouseleave', () => {
-                cursor.classList.remove('hover');
-            });
-        });
-    } else {
-        cursor.style.display = 'none';
-        document.body.style.cursor = 'auto';
-    }
-
-    // 3. Countdown Timer logic
+    // 2. Countdown Timer logic
     const timerDisplay = document.getElementById('timer');
     const dropDate = new Date().getTime() + (24 * 60 * 60 * 1000);
 
@@ -76,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         timerDisplay.innerHTML = `${h}:${m}:${s}`;
     }, 1000);
 
-    // 4. Parallax Scroll Effect on Hero
+    // 3. Parallax Scroll Effect on Hero
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
         const heroBg = document.querySelector('.hero-bg');
@@ -85,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 5. Drawer & Quick View Modal Logic
+    // 4. Drawer & Quick View Modal Logic
     const quickViewDrawer = document.getElementById('quick-view-drawer');
     const closeDrawerBtn = quickViewDrawer.querySelector('.drawer-close');
     const drawerOverlay = quickViewDrawer.querySelector('.drawer-overlay');
@@ -131,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 6. Cart Drawer (Empty State Demo)
+    // 5. Cart Drawer (Empty State Demo)
     const cartDrawer = document.getElementById('cart-drawer');
     const cartTrigger = document.querySelector('.cart-trigger');
     const closeCartBtn = cartDrawer.querySelector('.drawer-close');
@@ -152,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
     closeCartBtn.addEventListener('click', closeCart);
     cartOverlay.addEventListener('click', closeCart);
 
-    // 7. Intersection Observer for scroll animations
+    // 6. Intersection Observer for scroll animations
     const observerOptions = {
         root: null,
         rootMargin: '0px',
