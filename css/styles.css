@@ -1,9 +1,9 @@
 :root {
-    --bg-color: #050505;
-    --text-primary: #ffffff;
-    --text-secondary: #888888;
+    --bg-color: #ffffff;
+    --text-primary: #000000;
+    --text-secondary: #666666;
     --accent-color: #ff3333;
-    --border-color: rgba(255, 255, 255, 0.08);
+    --border-color: rgba(0, 0, 0, 0.08);
     --font-main: 'Inter', sans-serif;
 }
 
@@ -32,7 +32,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #000000;
+    background-color: #ffffff;
     z-index: 10000;
     display: flex;
     justify-content: center;
@@ -73,11 +73,11 @@ body {
 @keyframes logoPulse {
     0%, 100% {
         transform: scale(0.98);
-        filter: brightness(0.8);
+        filter: brightness(0.9);
     }
     50% {
         transform: scale(1.02);
-        filter: brightness(1.2);
+        filter: brightness(1.1);
     }
 }
 
@@ -157,7 +157,7 @@ body {
     height: 120%; /* Taller for parallax translate */
     background-size: cover;
     background-position: center;
-    filter: grayscale(30%) contrast(1.2);
+    filter: grayscale(35%) contrast(1.15);
     transform: scale(1);
     will-change: transform;
 }
@@ -168,7 +168,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(5,5,5,0.4) 0%, rgba(5,5,5,0.95) 90%);
+    background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,1) 100%);
 }
 
 .hero-content {
@@ -188,7 +188,7 @@ body {
     width: 260px;
     height: 260px;
     object-fit: cover;
-    filter: drop-shadow(0 0 15px rgba(255,255,255,0.03));
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.05));
 }
 
 /* Glitch Effect */
@@ -274,11 +274,13 @@ body {
     text-decoration: none;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     border-radius: 0;
+    display: inline-block;
 }
 
 .btn-outline {
     border: 1px solid var(--text-primary);
     color: var(--text-primary);
+    background-color: transparent;
 }
 
 .btn-outline:hover {
@@ -364,7 +366,7 @@ body {
     position: relative;
     overflow: hidden;
     aspect-ratio: 3/4;
-    background-color: #0d0d0d;
+    background-color: #f7f7f7;
 }
 
 .product-image-wrapper img {
@@ -380,12 +382,13 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.55);
+    background-color: rgba(255, 255, 255, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
     transition: opacity 0.4s ease;
+    backdrop-filter: blur(4px);
 }
 
 .product-card:not(.sold-out-card):hover .product-image-wrapper img {
@@ -398,7 +401,8 @@ body {
 
 .sold-out-overlay {
     opacity: 1;
-    background-color: rgba(5,5,5,0.7);
+    background-color: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(2px);
 }
 
 .view-text {
@@ -407,13 +411,14 @@ body {
     letter-spacing: 4px;
     border: 1px solid var(--text-primary);
     padding: 1.2rem 2.2rem;
-    backdrop-filter: blur(8px);
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(255, 255, 255, 0.8);
+    color: var(--text-primary);
 }
 
 .sold-out {
-    border-color: rgba(255,255,255,0.2);
+    border-color: rgba(0, 0, 0, 0.15);
     color: var(--text-secondary);
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .product-info {
@@ -461,7 +466,7 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(6px);
     z-index: -1;
     opacity: 0;
@@ -477,7 +482,7 @@ body {
 .drawer-content {
     width: 100%;
     height: 100%;
-    background-color: #080808;
+    background-color: #ffffff;
     border-left: 1px solid var(--border-color);
     padding: 4rem 3rem;
     display: flex;
@@ -514,7 +519,7 @@ body {
 .drawer-image {
     aspect-ratio: 1;
     overflow: hidden;
-    background-color: #0c0c0c;
+    background-color: #f7f7f7;
     border: 1px solid var(--border-color);
 }
 
@@ -699,6 +704,7 @@ body {
 /* Footer */
 .footer {
     padding: 6rem 4rem 2rem;
+    border-top: 1px solid var(--border-color);
 }
 
 .footer-grid {
